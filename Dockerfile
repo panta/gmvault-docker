@@ -20,7 +20,8 @@ ENV GMVAULT_DIR="/data" \
 	GMVAULT_QUICK_SYNC_SCHEDULE="1 2 * * 1-6" \
 	GMVAULT_DEFAULT_GID="9000" \
 	GMVAULT_DEFAULT_UID="9000" \
-	CRONTAB="/var/spool/cron/crontabs/gmvault"
+	CRONTAB="/var/spool/cron/crontabs/gmvault" \
+	GMVAULT_SYNC_ON_STARTUP="no"
 
 VOLUME $GMVAULT_DIR
 RUN mkdir -p /app
