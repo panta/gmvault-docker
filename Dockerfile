@@ -16,6 +16,7 @@ ENV LANG=C.UTF-8
 # GMVAULT_DIR allows using a location that is not the default $HOME/.gmvault.
 ENV GMVAULT_DIR="/data" \
 	GMVAULT_EMAIL_ADDRESS="test@example.com" \
+	GMVAULT_SEND_REPORTS_TO="" \
 	GMVAULT_TIMEZONE="Europe/Rome" \
 	GMVAULT_FULL_SYNC_SCHEDULE="1 3 * * 0" \
 	GMVAULT_QUICK_SYNC_SCHEDULE="1 2 * * 1-6" \
