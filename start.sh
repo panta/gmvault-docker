@@ -36,8 +36,12 @@ chown -R gmvault:gmvault /data
 
 # Set up crontab.
 echo "" > $CRONTAB
-echo "${GMVAULT_FULL_SYNC_SCHEDULE} /app/backup_full.sh" >> $CRONTAB
-echo "${GMVAULT_QUICK_SYNC_SCHEDULE} /app/backup_quick.sh" >> $CRONTAB
+if [ "${GMVAULT_FULL_SYNC_SCHEDULE}" != "" ] ; then
+	echo "${GMVAULT_FULL_SYNC_SCHEDULE} /app/backup_full.sh" >> $CRONTAB
+fi
+if [ "${GMVAULT_QUICK_SYNC_SCHEDULE}" != "" ] ; then
+	echo "${GMVAULT_QUICK_SYNC_SCHEDULE} /app/backup_quick.sh" >> $CRONTAB
+fi
 
 # Start app.
 if [ -f $OAUTH_TOKEN ]; then
