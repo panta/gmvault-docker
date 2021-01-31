@@ -1,6 +1,8 @@
 #!/bin/bash
 
-OAUTH_TOKEN="/data/${GMVAULT_EMAIL_ADDRESS}.oauth2"
+: ${GMVAULT_DIR:="/data"}
+
+OAUTH_TOKEN="${GMVAULT_DIR}/${GMVAULT_EMAIL_ADDRESS}.oauth2"
 
 if [ "$GMVAULT_OPTIONS" != "" ]; then
 	echo "Gmvault will run with the following additional options: $GMVAULT_OPTIONS."
@@ -32,7 +34,7 @@ echo "Using user ID $(id -u gmvault)."
 
 # Make sure the files are owned by the user executing Gmvault, as we will need
 # to add/delete files.
-chown -R gmvault:gmvault /data
+chown -R gmvault:gmvault "${GMVAULT_DIR}"
 
 # Set up crontab.
 echo "" > $CRONTAB
@@ -48,7 +50,7 @@ if [ -f $OAUTH_TOKEN ]; then
 	echo "Using OAuth token found at $OAUTH_TOKEN."
 
 	if [ "$GMVAULT_SYNC_ON_STARTUP" == "yes" ]; then
-		if [ -d /data/db ]; then
+		if [ -d "${GMVAULT_DIR}/db" ]; then
 			echo "Existing database directory found, running quick sync."
 			su-exec gmvault "/app/backup_quick.sh"
 		else
@@ -70,7 +72,7 @@ echo "No Gmail OAuth token found at $OAUTH_TOKEN."
 echo "Please set it up with the following instructions:"
 echo "  1/ Attach a terminal to your container."
 echo "  2/ Run this command:"
-echo "     su -c 'gmvault sync -d /data $GMVAULT_EMAIL_ADDRESS' gmvault"
+echo "     su -c 'gmvault sync -d $GMVAULT_DIR $GMVAULT_EMAIL_ADDRESS' gmvault"
 echo "  3/ Go to the URL indicated, and copy the token back."
 echo "  4/ Once the synchronization process starts, restart the container."
 
