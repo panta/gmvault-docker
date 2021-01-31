@@ -1,5 +1,18 @@
 FROM alpine:latest
 
+MAINTAINER Marco Pantaleoni <marco.pantaleoni@gmail.com>
+
+ENV LANG=C.UTF-8
+
+# crontab(5) syntax
+#  field         allowed values
+#  -----         --------------
+#  minute        0-59
+#  hour          0-23
+#  day of month  1-31
+#  month         1-12 (or names, see below)
+#  day of week   0-7 (0 or 7 is Sun, or use names)
+
 # GMVAULT_DIR allows using a location that is not the default $HOME/.gmvault.
 ENV GMVAULT_DIR="/data" \
 	GMVAULT_EMAIL_ADDRESS="test@example.com" \
@@ -10,7 +23,7 @@ ENV GMVAULT_DIR="/data" \
 	CRONTAB="/var/spool/cron/crontabs/gmvault"
 
 VOLUME $GMVAULT_DIR
-RUN mkdir /app
+RUN mkdir -p /app
 
 # Set up environment.
 RUN apk add --update \
@@ -35,6 +48,7 @@ RUN apk add --update \
 		-G "gmvault" \
 		gmvault
 
+#
 # Copy cron jobs.
 COPY backup_quick.sh /app/
 COPY backup_full.sh /app/

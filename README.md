@@ -2,11 +2,12 @@ Docker Image for GMVault
 ========================
 
 
+This is a fork of the original [gmvault-docker](https://github.com/guillaumeaubert/gmvault-docker) by Guillaume Aubert.
 Code Status
 -----------
 
-[![Docker Build Status](https://img.shields.io/docker/build/aubertg/gmvault-docker.svg)](https://hub.docker.com/r/aubertg/gmvault-docker/builds/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/aubertg/gmvault-docker.svg)](https://hub.docker.com/r/aubertg/gmvault-docker/)
+[![Docker Build Status](https://img.shields.io/docker/build/panta/gmvault-docker.svg)](https://hub.docker.com/r/panta/gmvault-docker/builds/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/panta/gmvault-docker.svg)](https://hub.docker.com/r/panta/gmvault-docker/)
 
 
 Overview
@@ -25,7 +26,7 @@ docker run \
 	-e GMVAULT_UID=$(id -u myuser) \
 	-e GMVAULT_GID=$(id -g mygroup) \
 	-e GMVAULT_EMAIL_ADDRESS="myaddress@gmail.com" \
-	aubertg/gmvault-docker
+	panta/gmvault
 ```
 
 
@@ -107,17 +108,17 @@ Thanks
 ------
 
 * Thank you [Guillaume Aubert](https://github.com/gaubert) for developing
-[Gmvault](https://github.com/gaubert/gmvault)!
+[Gmvault](https://github.com/gaubert/gmvault) and [gmvault-docker](https://github.com/guillaumeaubert/gmvault-docker)!
 
-* Thank you [Jason Horne](https://github.com/jdhorne) for publishing
-[jdhorne/gmvault-docker](https://github.com/jdhorne/gmvault-docker)! I learned
-a lot from your architecture before building my own image.
+* Thank you [Jason Horne](https://github.com/jdhorne) for the original [jdhorne/gmvault-docker](https://github.com/jdhorne/gmvault-docker)!
 
 
 Copyright
 ---------
 
 Copyright (C) 2017 Guillaume Aubert.
+Modifications are:
+  Copyright (C) 2021 Marco Pantaleoni.
 
 
 License
@@ -125,11 +126,3 @@ License
 
 This software is released under the MIT license. See the LICENSE file for
 details.
-
-
-Disclaimer
-----------
-
-I am providing code in this repository to you under an open source license.
-Because this is my personal repository, the license you receive to my code is
-from me and not from my employer (Facebook).
