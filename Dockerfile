@@ -30,8 +30,8 @@ RUN apk add --update \
 		bash \
 		ca-certificates \
 		mailx \
-		py-pip \
-		python \
+		py2-pip \
+		python2 \
 		ssmtp \
 		shadow \
 		su-exec \
